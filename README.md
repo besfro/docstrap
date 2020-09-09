@@ -11,7 +11,7 @@ npm install --save-dev docstrapps
 ```
 {
 	"opts": {
-		"template": "./docstrap/template"
+		"template": "./node_modules/docstrapps/template"
 	}
 }
 ```
@@ -21,7 +21,7 @@ npm install --save-dev docstrapps
 {
 	"opts": {},
 	"template": {
-		nameSpaceToNav: false,  // 是否将 @namespace 做为nav导航,
+		namespaceToNav: false,  // 是否将 @namespace 做为nav导航,
 		theme: "flatlyPlus"  // 新增主题
 	}
 }
