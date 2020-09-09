@@ -1136,8 +1136,9 @@ img {
   border-radius: 50%;
 }
 hr {
-  margin-top: 21px;
-  margin-bottom: 21px;
+  margin-top: 31px;
+  margin-bottom: 31px;
+  border: 0;
 }
 .sr-only {
   position: absolute;
