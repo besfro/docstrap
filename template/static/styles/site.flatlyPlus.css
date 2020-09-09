@@ -1139,6 +1139,7 @@ hr {
   margin-top: 31px;
   margin-bottom: 31px;
   border: 0;
+  border-top: 1px solid #ecf0f1;
 }
 .sr-only {
   position: absolute;
