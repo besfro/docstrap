@@ -1,6 +1,6 @@
 {
   "name": "docstrapps",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "decription": "A template for JSDoc3",
   "devDependencies": {
     "async": "~2.0.1",

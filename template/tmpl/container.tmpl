@@ -9,10 +9,14 @@
 	<?js= self.partial('mainpage.tmpl', doc) ?>
 
 <?js } else if (doc.kind === 'source') { ?>
-		<h1 class="page-title"><?js= title ?></h1>
+    <h1 class="page-title"><?js= title ?></h1>
     <?js= self.partial('source.tmpl', doc) ?>
 <?js } else { ?>
-	<h1 class="page-title"><?js= title ?></h1>
+    <?js if (doc.kind === 'class') { ?>
+        <h1 class="page-title">Class</h1>
+    <?js } else { ?>
+	    <h1 class="page-title"><?js= doc.name || title ?></h1>
+    <?js } ?>
 <section>
 
 <header>
@@ -20,7 +24,6 @@
         <h2><?js if (doc.ancestors && doc.ancestors.length) { ?>
             <span class="ancestors"><?js= doc.ancestors.join('') ?></span>
         <?js } ?>
-        <?js= doc.name ?>
         <?js if (doc.variation) { ?>
             <sup class="variation"><?js= doc.variation ?></sup>
         <?js } ?></h2>
