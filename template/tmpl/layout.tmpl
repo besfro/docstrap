@@ -31,18 +31,16 @@
 	<div class="navbar-collapse collapse" id="topNavigation">
 		<ul class="nav navbar-nav">
 			<?js this.nav.topLevelNav.forEach(function(entry){ ?>
-				<?js if (entry.title === 'Namespaces' && that.navOptions.namespaceToNav) { ?>
-					<?js entry.members.forEach(function(item) { ?> 
-						<li class="dropdown"><?js= item ?></li>
-					<?js }) ?>
-				<?js } else { ?>
-					<li class="dropdown">
+				<li class="dropdown">
+					<?js if(entry.members.length > 0) { ?>
 						<a href="<?js= entry.link ?>" class="dropdown-toggle" data-toggle="dropdown"><?js= entry.title ?><b class="caret"></b></a>
 						<ul class="dropdown-menu <?js= that.navOptions.navType ==='inline' ? 'inline' : '' ?>">
 							<?js entry.members.forEach(function(member){ ?><li><?js= member ?></li><?js	}); ?>
 						</ul>
-					</li>
-				<?js } ?>
+					<?js } else { ?>
+						<a href="<?js= entry.link ?>"><?js= entry.title ?></a>
+					<?js } ?>
+				</li>
 			<?js }); ?>
 		</ul>
         <?js if (this.navOptions.search) { ?>

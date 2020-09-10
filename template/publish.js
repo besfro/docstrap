@@ -470,6 +470,46 @@ function buildNav(members) {
   }
 
   var topLevelNav = [];
+  
+  if (navOptions.namespaceToNav) {
+    let map = {}
+    nav.namespace && 
+    nav.namespace.members.length > 0 && 
+    _.each(nav.namespace.members, function(linkString) {
+      // 只解析到二级
+      const parser = (function() {
+        const match = linkString.match(/^<a.+href="(.+)">(?:([a-z]+)\.)?([a-z]+)<\/a>$/i) || []
+        return {
+          input: match[0],
+          parent: match[2],
+          name: match[3],
+          link: match[1],
+          members: []
+        }
+      })()
+      const { name, parent, link, input } = parser
+      if (parent) {
+        let parentNode = map[parent] 
+        parentNode ? parentNode.members.push(input) : map[parent] = { name: parent, members: [], link: ''}
+      } else if (name) {
+        let node = map[name]
+        node 
+          ? (node.link = link, node.input = input) 
+          : map[name] = parser
+      }
+    })
+
+    Object.keys(map).forEach(key => {
+      const item = map[key]
+      topLevelNav.push({
+        title: item.name,
+        link: item.link,
+        members: item.members
+      });
+    })
+    delete nav.namespace
+  }
+
   _.each(nav, function(entry, name) {
     if (entry.members.length > 0 && name !== "index") {
       topLevelNav.push({
@@ -480,6 +520,7 @@ function buildNav(members) {
     }
   });
   nav.topLevelNav = topLevelNav;
+  console.log(topLevelNav)
 }
 
 /**
