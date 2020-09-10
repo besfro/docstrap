@@ -520,7 +520,6 @@ function buildNav(members) {
     }
   });
   nav.topLevelNav = topLevelNav;
-  console.log(topLevelNav)
 }
 
 /**
