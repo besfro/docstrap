@@ -21,9 +21,6 @@
 
 <header>
     <?js if (!doc.longname || doc.kind !== 'module') { ?>
-        <?js if (doc.ancestors && doc.ancestors.length) { ?>
-           <span class="ancestors"><?js= doc.ancestors.join('') ?></span>
-        <?js } ?>
         <?js if (doc.variation) { ?>
            <sup class="variation"><?js= doc.variation ?></sup>
         <?js } ?>
